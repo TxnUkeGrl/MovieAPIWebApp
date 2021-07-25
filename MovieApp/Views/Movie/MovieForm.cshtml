@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Movie Form";
+}
+@using MovieAPILab.Models
+@model Movie
+<h1>Movie Form</h1>
+
+@if (Model.Id == 0)
+{
+    <form action="/Movie/addMovie" method="post" class="form-control">
+        <div class="form-row">
+            @Html.LabelFor(m => m.Title)
+            @Html.ValidationMessageFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title)
+        </div>
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.Genre)
+            @Html.ValidationMessageFor(m => m.Genre)
+            @Html.TextBoxFor(m => m.Genre)
+        </div>
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.Runtime)
+            @Html.ValidationMessageFor(m => m.Runtime)
+            @Html.TextBoxFor(m => m.Runtime)
+        </div>
+        
+        <div class="form-row">
+            <input type="submit" value="Submit New Movie" />
+        </div>
+    </form>
+}
+else
+{
+    <form action="/Movie/editMovie" method="post" class="form-control">
+        <input type="text" name="id" value="@Model.Id" hidden />
+        <div class="form-row">
+            @Html.LabelFor(m => m.Title)
+            @Html.ValidationMessageFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title)
+        </div>
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.Genre)
+            @Html.ValidationMessageFor(m => m.Genre)
+            @Html.TextBoxFor(m => m.Genre)
+        </div>
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.Runtime)
+            @Html.ValidationMessageFor(m => m.Runtime)
+            @Html.TextBoxFor(m => m.Runtime)
+        </div>
+               
+        <div class="form-row">
+            <input type="submit" value="Submit Movie Changes" />
+        </div>
+    </form>
+}
